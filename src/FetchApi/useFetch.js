@@ -39,7 +39,7 @@ export const useLazyFetch = () => {
   const fetchApiData = async (endPoint, method) => {
     try {
       setLoading(true);
-      const request = await fetch(`http://localhost:3001/api/${endPoint}`, {
+      const request = await fetch(`${process.env.REACT_APP_API_URL}/api/${endPoint}`, {
         method,
       });
       const response = await request.json();
