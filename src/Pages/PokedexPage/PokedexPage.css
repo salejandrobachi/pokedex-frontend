@@ -1,0 +1,39 @@
+ 
+  .ant-input-filled {
+    background-color: #d9d9d9 !important;
+  }
+  
+  .ant-input-filled:hover {
+    background-color: #e6e6e6 !important;
+  }
+  
+  .ant-input-filled:focus {
+    background-color: white !important;
+    border-color: #1890ff !important; 
+    box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2) !important;
+  }
+  
+  .aleatorio-button:hover span {
+    color: #ffffff !important; /* Color al pasar el mouse */
+  }
+  
+  .search-button:hover span{
+    color: #ffffff !important; /* Cambia '#ffffff' al color que desees */
+  }
+  
+  .ant-collapse > .ant-collapse-item > .ant-collapse-header .ant-collapse-arrow {
+    display: none !important;
+  }
+  .ant-collapse > .ant-collapse-item > .ant-collapse-content > .ant-collapse-content-box {
+    background-color: #444 !important;
+  }
+  
+  .info-button:hover {
+    border-color: #18974d !important;
+    color: #18974d !important;
+  }
+  
+  .info-button:active{
+    background-color: #1dd168 !important;
+    color: #000000 !important;
+  }
