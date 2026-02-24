@@ -11,7 +11,7 @@ const { Title } = Typography;
 function Regiones() {
   const [searchValue, setSearchValue] = useState('');
 
-  const { data, loading } = useFetch('http://localhost:3001/api/regions');
+  const { data, loading } = useFetch(`${process.env.REACT_APP_API_URL}/api/regions`);
 
   const [current, setCurrent] = useState('region');
   const onClick = e => {

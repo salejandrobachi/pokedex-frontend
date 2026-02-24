@@ -24,7 +24,7 @@ function BusquedaRegiones() {
     }
 
 
-    const url = `http://localhost:3001/api/regions/name?name=${nombreBusqueda}`
+    const url = `${process.env.REACT_APP_API_URL}/api/regions/name?name=${nombreBusqueda}`
     if (url) {
       fetch(url)
         .then((response) => response.json())

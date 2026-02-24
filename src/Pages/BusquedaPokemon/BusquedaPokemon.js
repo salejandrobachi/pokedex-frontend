@@ -65,16 +65,16 @@ function BusquedaPokemon() {
     let urlApi;
     switch (tipoBusqueda) {
       case '1':
-        urlApi = `http://localhost:3001/api/pokemon/number/${nombre}`
+        urlApi = `${process.env.REACT_APP_API_URL}/api/pokemon/number/${nombre}`
         return urlApi;
       case '2':
-        urlApi = `http://localhost:3001/api/pokemon/name/${nombre}`
+        urlApi = `${process.env.REACT_APP_API_URL}/api/pokemon/name/${nombre}`
         return urlApi;
       case '3':
-        urlApi = `http://localhost:3001/api/pokemon/type?type1=${nombre[0]}${nombre[1] ? `&type2=${nombre[1]}` : ''}`
+        urlApi = `${process.env.REACT_APP_API_URL}/api/pokemon/type?type1=${nombre[0]}${nombre[1] ? `&type2=${nombre[1]}` : ''}`
         return urlApi;
       case '4':
-        urlApi = `http://localhost:3001/api/pokemon/week?`;
+        urlApi = `${process.env.REACT_APP_API_URL}/api/pokemon/week?`;
         const weekParams = [];
         for (let i = 0; i < nombre.length; i++) {
           if (nombre[i]) {
@@ -84,7 +84,7 @@ function BusquedaPokemon() {
         urlApi += weekParams.join('&');
         return urlApi;
       case '5':
-        urlApi = `http://localhost:3001/api/pokemon/region/${nombre}`
+        urlApi = `${process.env.REACT_APP_API_URL}/api/pokemon/region/${nombre}`
         return urlApi;
       default:
         break;
