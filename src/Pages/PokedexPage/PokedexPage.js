@@ -1,10 +1,9 @@
 import React, { useState, useRef } from 'react';
-import { Typography, Button, Input, Collapse, Flex, Radio, Menu } from 'antd';
+import { Button, Input, Collapse, Flex, Radio, Menu } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import './PokedexPage.css';
 
-const { Title } = Typography;
 const { Panel } = Collapse;
 
 function PokedexPage() {
@@ -165,7 +164,7 @@ function PokedexPage() {
   }
 
   return (
-    <div style={{ backgroundColor: '#f0f0f0', minHeight: '100vh', padding: '24px'}}>
+    <div style={{ backgroundImage: 'url(/fondo.png)', backgroundRepeat: 'repeat', backgroundSize: '150px', minHeight: '100vh', padding: '24px'}}>
       <div style={{backgroundColor: 'white', display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '-10px', borderRadius: '8px'}}>
         <Menu mode="horizontal" items={items} onClick={onClick} selectedKeys={[current]} />
       </div>
@@ -179,16 +178,11 @@ function PokedexPage() {
         alignItems: 'center',
         height: '100px',
       }}>
-        <Title level={1} 
-        style={{ textAlign: 'center',
-        marginBottom: 0,
-        marginTop: 0,
-        padding: 0,
-        lineHeight: '1',
-        fontSize: '64px',
-        fontFamily: '-moz-initial' }}>
-          BachiDex
-        </Title>
+        <img
+          src="/titulo.png"
+          alt="BachiDex"
+          style={{ height: '150px' }}
+        />
       </div>
 
       <div 
@@ -271,10 +265,6 @@ function PokedexPage() {
           </div>
         </Panel>
       </Collapse>
-
-      <div style={{ textAlign: 'center', color: '#555', marginTop: '24px' }}>
-        Holis, esta es mi pagina :3
-      </div>
     </div>
   );
 }
