@@ -1,78 +1,78 @@
-import React, { useState, useRef } from 'react';
-import { Button, Input, Collapse, Flex, Radio, Menu } from 'antd';
-import { SearchOutlined } from '@ant-design/icons';
-import { useNavigate } from 'react-router-dom';
-import './PokedexPage.css';
+import React, { useState, useRef } from 'react'
+import { Button, Input, Collapse, Flex, Radio, Menu } from 'antd'
+import { SearchOutlined } from '@ant-design/icons'
+import { useNavigate } from 'react-router-dom'
+import './PokedexPage.css'
 
-const { Panel } = Collapse;
+const { Panel } = Collapse
 
-function PokedexPage() {
-  const [searchValue, setSearchValue] = useState('');
-  const [mostrarBusquedaAvanzada, setMostrarBusquedaAvanzada] = useState(false);
-  const advancedSearchRef = useRef(null);
-  const [searchCriterio, setSearchCriterio] = useState(1);
-  const navigate = useNavigate();
+function PokedexPage () {
+  const [searchValue, setSearchValue] = useState('')
+  const [mostrarBusquedaAvanzada, setMostrarBusquedaAvanzada] = useState(false)
+  const advancedSearchRef = useRef(null)
+  const [searchCriterio, setSearchCriterio] = useState(1)
+  const navigate = useNavigate()
 
-
-  const handleSearch = (value) => {
-    const Dividir = value.split(',');
-    const DividirSinEspacios = Dividir.map(elemento => elemento.trim());
-    FunBuscar(DividirSinEspacios, searchCriterio);
-  };
+  const handleSearch = value => {
+    const Dividir = value.split(',')
+    const DividirSinEspacios = Dividir.map(elemento => elemento.trim())
+    FunBuscar(DividirSinEspacios, searchCriterio)
+  }
 
   const handleRandomPokemon = () => {
-    const randomNumber = Math.floor(Math.random() * 1026).toString().padStart(3, '0');
-    setSearchValue(randomNumber);
-    const NumberArray = [randomNumber.toString()];
-    FunBuscar(NumberArray, 1);
-  };
+    const randomNumber = Math.floor(Math.random() * 1026)
+      .toString()
+      .padStart(3, '0')
+    setSearchValue(randomNumber)
+    const NumberArray = [randomNumber.toString()]
+    FunBuscar(NumberArray, 1)
+  }
 
   const toggleBusquedaAvanzada = () => {
-    setMostrarBusquedaAvanzada(!mostrarBusquedaAvanzada);
-  };
+    setMostrarBusquedaAvanzada(!mostrarBusquedaAvanzada)
+  }
 
-  const handleRadioChange = (e) => {
-    const newValue = e.target.value;
-    setSearchCriterio(newValue);
+  const handleRadioChange = e => {
+    const newValue = e.target.value
+    setSearchCriterio(newValue)
     switch (newValue) {
       case 1:
-        setSearchValue('');
-        break;
+        setSearchValue('')
+        break
       case 2:
-        setSearchValue('');
-        break;
+        setSearchValue('')
+        break
       case 3:
-        setSearchValue('');
-        break;
+        setSearchValue('')
+        break
       case 4:
-        setSearchValue('');
-        break;
+        setSearchValue('')
+        break
       case 5:
-      setSearchValue('');
-      break;
+        setSearchValue('')
+        break
       default:
-        setSearchValue('');
-        break;
+        setSearchValue('')
+        break
     }
-  };
+  }
 
   const getPlaceholderText = () => {
     switch (searchCriterio) {
       case 1:
-        return "Número del Pokédex Nacional";
+        return 'Número del Pokédex Nacional'
       case 2:
-        return "Nombre del Pokémon";
+        return 'Nombre del Pokémon'
       case 3:
-        return "Tipo de Pokémon (ej: Agua, Fuego)";
+        return 'Tipo de Pokémon (ej: Agua, Fuego)'
       case 4:
-        return "Debilidad del Pokémon (ej: Eléctrico, Planta)";
+        return 'Debilidad del Pokémon (ej: Eléctrico, Planta)'
       case 5:
-        return "Región del Pokémon";
+        return 'Región del Pokémon'
       default:
-        return "Número del Pokédex Nacional";
+        return 'Número del Pokédex Nacional'
     }
-    
-  };
+  }
 
   //let ruta = window.location.pathname;
   //let segmentos = ruta.split("/");
@@ -82,21 +82,21 @@ function PokedexPage() {
   const onClick = e => {
     switch (e.key) {
       case 'home':
-        return window.location.href='/';
+        return (window.location.href = '/')
       case 'region':
-        return window.location.href='/regiones';
+        return (window.location.href = '/regiones')
       case 'type':
-        return window.location.href='/tipos';
+        return (window.location.href = '/tipos')
       case 'resistencia':
-        return window.location.href='/resistencias';
+        return (window.location.href = '/resistencias')
       case 'debilidad':
-        return window.location.href='/debilidades';
-        case 'inmunidad':
-        return window.location.href='/inmunidades';
+        return (window.location.href = '/debilidades')
+      case 'inmunidad':
+        return (window.location.href = '/inmunidades')
       default:
-        return;
+        return
     }
-  };
+  }
 
   const items = [
     {
@@ -126,82 +126,163 @@ function PokedexPage() {
   ]
 
   const FunBuscar = (entrada, criterio) => {
-    let dato;
+    let dato
     switch (criterio) {
       case 1:
-        dato = [entrada[0].toString()];
+        dato = [entrada[0].toString()]
         console.log('Buscar:', dato, 'por criterio:', criterio)
-        navigate(`/busqueda?pokemon=${encodeURIComponent(dato)}&criterio=${encodeURIComponent(criterio)}`);
-        break;
+        navigate(
+          `/busqueda?pokemon=${encodeURIComponent(
+            dato
+          )}&criterio=${encodeURIComponent(criterio)}`
+        )
+        break
 
       case 2:
-        dato = [entrada[0].toString()];
+        dato = [entrada[0].toString()]
         console.log('Buscar:', dato, 'por criterio:', criterio)
-        navigate(`/busqueda?pokemon=${encodeURIComponent(dato)}&criterio=${encodeURIComponent(criterio)}`);
-        break;
+        navigate(
+          `/busqueda?pokemon=${encodeURIComponent(
+            dato
+          )}&criterio=${encodeURIComponent(criterio)}`
+        )
+        break
 
       case 3:
-        dato = entrada.slice(0,2);
+        dato = entrada.slice(0, 2)
         console.log('Buscar:', dato, 'por criterio:', criterio)
-        navigate(`/busqueda?pokemon=${encodeURIComponent(dato)}&criterio=${encodeURIComponent(criterio)}`);
-        break;
+        navigate(
+          `/busqueda?pokemon=${encodeURIComponent(
+            dato
+          )}&criterio=${encodeURIComponent(criterio)}`
+        )
+        break
 
       case 4:
-        dato = entrada.slice(0,7);
+        dato = entrada.slice(0, 7)
         console.log('Buscar:', dato, 'por criterio:', criterio)
-        navigate(`/busqueda?pokemon=${encodeURIComponent(dato)}&criterio=${encodeURIComponent(criterio)}`);
-        break;
+        navigate(
+          `/busqueda?pokemon=${encodeURIComponent(
+            dato
+          )}&criterio=${encodeURIComponent(criterio)}`
+        )
+        break
 
       case 5:
-        dato = [entrada[0].toString()];
+        dato = [entrada[0].toString()]
         console.log('Buscar:', dato, 'por criterio:', criterio)
-        navigate(`/busqueda?pokemon=${encodeURIComponent(dato)}&criterio=${encodeURIComponent(criterio)}`);
-        break;
-    
+        navigate(
+          `/busqueda?pokemon=${encodeURIComponent(
+            dato
+          )}&criterio=${encodeURIComponent(criterio)}`
+        )
+        break
+
       default:
-        break;
+        break
     }
   }
 
   return (
-    <div style={{ backgroundImage: 'url(/fondo.png)', backgroundRepeat: 'repeat', backgroundSize: '150px', minHeight: '100vh', padding: '24px'}}>
-      <div style={{backgroundColor: 'white', display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '-10px', borderRadius: '8px'}}>
-        <Menu mode="horizontal" items={items} onClick={onClick} selectedKeys={[current]} />
-      </div>
-      <div style={{
-        backgroundColor: 'white',
+    <div
+      className='pokedex-root'
+      style={{
+        backgroundImage: 'url(/fondo.png)',
+        backgroundRepeat: 'repeat',
+        backgroundSize: '150px',
+        minHeight: '100vh',
         padding: '24px',
-        borderRadius: '8px',
-        marginBottom: '24px',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100px',
-      }}>
+        position: 'relative'
+      }}
+    >
+      <div
+        style={{
+          background: 'rgba(20,20,24,0.9)',
+          backdropFilter: 'blur(10px)',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          marginBottom: '16px',
+          borderRadius: '8px',
+          border: '1px solid rgba(0,188,212,0.25)',
+          position: 'relative',
+          zIndex: 1,
+          maxWidth: '1000px',
+          margin: '0 auto 16px auto'
+        }}
+      >
+        <Menu
+          mode='horizontal'
+          items={items}
+          onClick={onClick}
+          selectedKeys={[current]}
+          style={{ justifyContent: 'center' }}
+        />
+      </div>
+      <div
+        style={{
+          background: 'transparent',
+          padding: '24px',
+          marginBottom: '8px',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          position: 'relative',
+          zIndex: 1
+        }}
+      >
         <img
-          src="/titulo.png"
-          alt="BachiDex"
-          style={{ height: '150px' }}
+          src='/titulo.png'
+          alt='BachiDex'
+          className='logo-img'
+          style={{
+            height: '150px',
+            filter:
+              'drop-shadow(0 0 20px rgba(0,188,212,0.5)) drop-shadow(0 0 40px rgba(224,85,85,0.2))',
+            transition: 'filter 0.3s ease'
+          }}
         />
       </div>
 
-      <div 
-      style={{ backgroundColor: '#303030',
-      borderRadius: '8px 8px 0 0',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      overflow: 'hidden' }}>
-        <div style={{ display: 'flex', justifyContent: 'center', width: '100%', padding: '24px' }}>
+      <div
+        className='search-card'
+        style={{
+          background: 'rgba(20,20,24,0.9)',
+          backdropFilter: 'blur(10px)',
+          border: '1px solid rgba(0,188,212,0.25)',
+          borderRadius: '8px 8px 0 0',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          overflow: 'hidden',
+          maxWidth: '1000px',
+          margin: '0 auto',
+          position: 'relative'
+        }}
+      >
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            width: '100%',
+            padding: '24px'
+          }}
+        >
           <Input
-            variant="filled"
+            variant='filled'
             placeholder={getPlaceholderText()}
             value={searchValue}
-            onChange={(e) => setSearchValue(e.target.value)}
+            onChange={e => setSearchValue(e.target.value)}
             style={{ width: 400, fontSize: '1.2em', padding: '10px' }}
           />
         </div>
-        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '5px' }}>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            marginBottom: '5px'
+          }}
+        >
           <Button
             icon={<SearchOutlined />}
             onClick={() => handleSearch(searchValue)}
@@ -212,61 +293,125 @@ function PokedexPage() {
             Buscar
           </Button>
           <Button
-            style={{ marginLeft: '8px', backgroundColor: '#ff8503', borderColor: '#ff8503' }}
+            style={{
+              marginLeft: '8px',
+              backgroundColor: '#ff8503',
+              borderColor: '#ff8503'
+            }}
             onClick={() => handleRandomPokemon()}
-            className="aleatorio-button"
+            className='aleatorio-button'
           >
             Aleatorio
           </Button>
         </div>
-        <p style={{ color: '#ccc', marginTop: '0', fontSize: '0.9em', textAlign: 'center', marginBottom: '16px', padding: '0 24px' }}>
-          ¡Usa la búsqueda avanzada para encontrar Pokémon por su Nombre, Región, Tipo o Debilidad!
+        <p
+          style={{
+            color: '#ccc',
+            marginTop: '0',
+            fontSize: '0.9em',
+            textAlign: 'center',
+            marginBottom: '16px',
+            padding: '0 24px'
+          }}
+        >
+          ¡Usa la búsqueda avanzada para encontrar Pokémon por su Nombre,
+          Región, Tipo o Debilidad!
         </p>
       </div>
 
-      <Collapse
-        activeKey={mostrarBusquedaAvanzada ? ['advanced'] : []}
+      <div
         style={{
-          width: '100%',
+          maxWidth: '1002px',
+          margin: '-2px auto 0 auto',
           borderRadius: '0 0 8px 8px',
-          marginTop: '-2px',
-          border: 'none',
+          border: '1px solid rgba(0,188,212,0.25)',
+          borderTop: 'none',
+          position: 'relative',
+          zIndex: 1,
+          overflow: 'hidden',
+          boxSizing: 'border-box'
         }}
-        ref={advancedSearchRef}
       >
-        <Panel
-          header={
-          <div onClick={toggleBusquedaAvanzada} style={{ textAlign: 'center',
-            color: '#ccc',
-            cursor: 'pointer' }}
-            >
-              {mostrarBusquedaAvanzada ? 'Ocultar búsqueda avanzada' : 'Mostrar búsqueda avanzada'} 
-          </div>}
-          key="advanced"
-          style={{ border: 'none', backgroundColor: '#444' }}
+        <Collapse
+          activeKey={mostrarBusquedaAvanzada ? ['advanced'] : []}
+          style={{
+            width: '100%',
+            border: 'none'
+          }}
+          ref={advancedSearchRef}
         >
-          <div style={{ padding: '0px', justifyContent: 'center' }}>
-            <p style={{ textAlign: 'center', color: 'white' }}>Busca Pokémon por: </p>
-          <Flex gap={8} wrap="wrap" align="center" justify="center">
-            <Radio.Group
-              type="button"
-              buttonStyle="solid"
-              value={searchCriterio}
-              onChange={handleRadioChange}
-              style={{ width: 'auto' }}
-            >
-              <Radio.Button value={1} style={{ textAlign: 'center', flex: 1 }}>Numero de Pokédex</Radio.Button>
-              <Radio.Button value={2} style={{ textAlign: 'center', flex: 1 }}>Nombre</Radio.Button>
-              <Radio.Button value={5} style={{ textAlign: 'center', flex: 1 }}>Región</Radio.Button>
-              <Radio.Button value={3} style={{ textAlign: 'center', flex: 1 }}>Tipo</Radio.Button>
-              <Radio.Button value={4} style={{ textAlign: 'center', flex: 1 }}>Debilidad</Radio.Button>
-            </Radio.Group>
-          </Flex>
-          </div>
-        </Panel>
-      </Collapse>
+          <Panel
+            header={
+              <div
+                onClick={toggleBusquedaAvanzada}
+                style={{
+                  textAlign: 'center',
+                  color: '#ccc',
+                  cursor: 'pointer'
+                }}
+              >
+                {mostrarBusquedaAvanzada
+                  ? 'Ocultar búsqueda avanzada'
+                  : 'Mostrar búsqueda avanzada'}
+              </div>
+            }
+            key='advanced'
+            style={{
+              border: 'none',
+              background: 'rgba(20,20,24,0.9)',
+              backdropFilter: 'blur(10px)'
+            }}
+          >
+            <div style={{ padding: '0px', justifyContent: 'center' }}>
+              <p style={{ textAlign: 'center', color: 'white' }}>
+                Busca Pokémon por:
+              </p>
+              <Flex gap={8} wrap='wrap' align='center' justify='center'>
+                <Radio.Group
+                  type='button'
+                  buttonStyle='solid'
+                  value={searchCriterio}
+                  onChange={handleRadioChange}
+                  style={{ width: 'auto' }}
+                >
+                  <Radio.Button
+                    value={1}
+                    style={{ textAlign: 'center', flex: 1 }}
+                  >
+                    Numero de Pokédex
+                  </Radio.Button>
+                  <Radio.Button
+                    value={2}
+                    style={{ textAlign: 'center', flex: 1 }}
+                  >
+                    Nombre
+                  </Radio.Button>
+                  <Radio.Button
+                    value={5}
+                    style={{ textAlign: 'center', flex: 1 }}
+                  >
+                    Región
+                  </Radio.Button>
+                  <Radio.Button
+                    value={3}
+                    style={{ textAlign: 'center', flex: 1 }}
+                  >
+                    Tipo
+                  </Radio.Button>
+                  <Radio.Button
+                    value={4}
+                    style={{ textAlign: 'center', flex: 1 }}
+                  >
+                    Debilidad
+                  </Radio.Button>
+                </Radio.Group>
+              </Flex>
+            </div>
+          </Panel>
+        </Collapse>
+      </div>
     </div>
-  );
+  )
 }
 
-export default PokedexPage;
+export default PokedexPage
