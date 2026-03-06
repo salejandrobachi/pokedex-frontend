@@ -1,0 +1,39 @@
+.page-root {
+  min-height: 100vh;
+  padding: 24px;
+  position: relative;
+}
+
+.page-root::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 15, 18, 0.82);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.page-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.page-navbar-card {
+  background: rgba(20, 20, 24, 0.9);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  border: 1px solid rgba(0, 188, 212, 0.25);
+  margin-bottom: 16px;
+}
+
+.page-title-card {
+  background: rgba(20, 20, 24, 0.9);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 188, 212, 0.25);
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 16px;
+  text-align: center;
+}

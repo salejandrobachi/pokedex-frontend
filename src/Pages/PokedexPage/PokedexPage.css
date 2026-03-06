@@ -1,120 +1,13 @@
- .ant-input-filled {
-   background-color: #d9d9d9 !important;
- }
+.logo-img:hover {
+  filter: drop-shadow(0 0 30px rgba(0, 188, 212, 0.7)) drop-shadow(0 0 60px rgba(224, 85, 85, 0.35)) !important;
+}
 
- .ant-input-filled:hover {
-   background-color: #e6e6e6 !important;
- }
-
- .ant-input-filled:focus {
-   background-color: white !important;
-   border-color: #1890ff !important;
-   box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2) !important;
- }
-
- .aleatorio-button:hover span {
-   color: #ffffff !important;
-   /* Color al pasar el mouse */
- }
-
- .search-button:hover span {
-   color: #ffffff !important;
-   /* Cambia '#ffffff' al color que desees */
- }
-
- .ant-collapse>.ant-collapse-item>.ant-collapse-header .ant-collapse-arrow {
-   display: none !important;
- }
-
- .ant-collapse>.ant-collapse-item>.ant-collapse-content>.ant-collapse-content-box,
- .ant-collapse>.ant-collapse-item>.ant-collapse-content {
-   background: rgba(20, 20, 24, 0.9) !important;
-   backdrop-filter: blur(10px) !important;
- }
-
- .info-button:hover {
-   border-color: #18974d !important;
-   color: #18974d !important;
- }
-
- .info-button:active {
-   background-color: #1dd168 !important;
-   color: #000000 !important;
- }
-
- .search-card::before {
-   content: '';
-   position: absolute;
-   top: 0;
-   left: 0;
-   right: 0;
-   height: 2px;
-   background: linear-gradient(90deg, transparent, #00bcd4, #e05555, transparent);
- }
-
- .pokedex-root::before {
-   content: '';
-   position: fixed;
-   inset: 0;
-   background: rgba(15, 15, 18, 0.82);
-   pointer-events: none;
-   z-index: 0;
- }
-
- .logo-img:hover {
-   filter: drop-shadow(0 0 30px rgba(0, 188, 212, 0.7)) drop-shadow(0 0 60px rgba(224, 85, 85, 0.35)) !important;
- }
-
- /* Menu oscuro */
- .ant-menu {
-   background: transparent !important;
-   border-bottom: none !important;
-   width: 100%;
- }
-
- .ant-menu-item {
-   color: #888 !important;
- }
-
- .ant-menu-item:hover {
-   color: #00bcd4 !important;
- }
-
- .ant-menu-item-selected {
-   color: #00bcd4 !important;
- }
-
- .ant-radio-button-wrapper {
-   background: rgba(255, 255, 255, 0.04) !important;
-   border-color: rgba(0, 188, 212, 0.25) !important;
- }
-
- .ant-radio-button-wrapper span {
-   color: #888 !important;
- }
-
- .ant-radio-button-wrapper:hover {
-   border-color: #00bcd4 !important;
- }
-
- .ant-radio-button-wrapper:hover span {
-   color: #00bcd4 !important;
- }
-
- .ant-radio-button-wrapper-checked {
-   background: rgba(0, 188, 212, 0.15) !important;
-   border-color: #00bcd4 !important;
- }
-
- .ant-radio-button-wrapper-checked span {
-   color: #00bcd4 !important;
- }
-
- .ant-collapse-item {
-   margin: 0 !important;
- }
-
- .ant-collapse>.ant-collapse-item>.ant-collapse-header {
-   padding-left: 16px !important;
-   padding-right: 16px !important;
- }
+.search-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00bcd4, #e05555, transparent);
+}
