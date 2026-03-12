@@ -30,7 +30,7 @@ function PokedexPage() {
   }
 
   const handleSearch = value => {
-    const terminos = value.split(',').map(e => e.trim())
+    const terminos = Array.isArray(value) ? value : value.split(',').map(e => e.trim())
     funBuscar(terminos, criterio)
   }
 

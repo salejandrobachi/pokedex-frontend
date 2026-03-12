@@ -1,15 +1,22 @@
 import React, { useState } from 'react'
 import { Button, Input, Collapse, Flex, Radio } from 'antd'
 import { SearchOutlined } from '@ant-design/icons'
+import Combobox from '../../../Components/Combobox/Combobox'
 
 const { Panel } = Collapse
 
 const criterioPlaceholders = {
   1: 'Número del Pokédex Nacional',
   2: 'Nombre del Pokémon',
-  3: 'Tipo de Pokémon (ej: Agua, Fuego)',
-  4: 'Debilidad del Pokémon (ej: Eléctrico, Planta)',
+  3: 'Tipo de Pokémon',
+  4: 'Debilidad del Pokémon',
   5: 'Región del Pokémon',
+}
+
+const comboboxConfig = {
+  3: { endpoint: 'tipos', labelKey: 'nombre', mode: 'multiple', maxCount: 2 },
+  4: { endpoint: 'debilidades', labelKey: 'tipo_nombre', mode: 'multiple', maxCount: 5 },
+  5: { endpoint: 'regions', labelKey: 'nombre' },
 }
 
 function SearchSection({ searchValue, onSearchChange, onSearch, onRandom, criterio, onCriterioChange }) {
@@ -32,13 +39,26 @@ function SearchSection({ searchValue, onSearchChange, onSearch, onRandom, criter
         }}
       >
         <div style={{ display: 'flex', justifyContent: 'center', width: '100%', padding: '24px' }}>
-          <Input
-            variant='filled'
-            placeholder={criterioPlaceholders[criterio] || criterioPlaceholders[1]}
-            value={searchValue}
-            onChange={e => onSearchChange(e.target.value)}
-            style={{ width: 400, fontSize: '1.2em', padding: '10px' }}
-          />
+          {comboboxConfig[criterio] ? (
+            <Combobox
+              endpoint={comboboxConfig[criterio].endpoint}
+              labelKey={comboboxConfig[criterio].labelKey}
+              value={searchValue}
+              onChange={onSearchChange}
+              placeholder={criterioPlaceholders[criterio]}
+              style={{ width: 400, fontSize: '1.2em' }}
+              mode={comboboxConfig[criterio].mode}
+              maxCount={comboboxConfig[criterio].maxCount}
+            />
+          ) : (
+            <Input
+              variant='filled'
+              placeholder={criterioPlaceholders[criterio] || criterioPlaceholders[1]}
+              value={searchValue}
+              onChange={e => onSearchChange(e.target.value)}
+              style={{ width: 400, fontSize: '1.2em', padding: '10px' }}
+            />
+          )}
         </div>
         <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '5px' }}>
           <Button
@@ -46,7 +66,7 @@ function SearchSection({ searchValue, onSearchChange, onSearch, onRandom, criter
             onClick={() => onSearch(searchValue)}
             style={{ backgroundColor: '#1dd168', borderColor: '#1dd168' }}
             className='search-button'
-            disabled={!searchValue}
+            disabled={!searchValue || (Array.isArray(searchValue) && searchValue.length === 0)}
           >
             Buscar
           </Button>
