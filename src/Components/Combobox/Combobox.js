@@ -29,6 +29,7 @@ function Combobox({ endpoint, labelKey, value, onChange, placeholder, style, mod
       value={value || undefined}
       placeholder={placeholder}
       style={style}
+      size='large'
       mode={mode}
       maxCount={maxCount}
       onDropdownVisibleChange={handleDropdownVisibleChange}
