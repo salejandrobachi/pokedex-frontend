@@ -1,5 +1,6 @@
 import React from 'react'
 import { Image, Flex } from 'antd'
+import { useFetch } from '../../../FetchApi/useFetch'
 
 const cardStyle = {
   background: 'rgba(20,20,24,0.9)',
@@ -13,6 +14,12 @@ const cardStyle = {
 }
 
 export default function PokemonSingleView({ data, loading }) {
+  const { data: tiposData } = useFetch(`${process.env.REACT_APP_API_URL}/api/tipos`)
+  const { data: debData } = useFetch(`${process.env.REACT_APP_API_URL}/api/debilidades`)
+
+  const tipoImg = tiposData ? Object.fromEntries(tiposData.map(t => [t.nombre, t.LinkImage])) : {}
+  const debImg = debData ? Object.fromEntries(debData.map(d => [d.tipo_nombre, d.tipo_link_image])) : {}
+
   if (loading) {
     return (
       <div style={cardStyle}>
@@ -32,6 +39,9 @@ export default function PokemonSingleView({ data, loading }) {
       </div>
     )
   }
+
+  const tipos = [data.tipo_1, data.tipo_2].filter(Boolean)
+  const debilidades = [data.debilidad_1, data.debilidad_2, data.debilidad_3, data.debilidad_4, data.debilidad_5, data.debilidad_6, data.debilidad_7].filter(Boolean)
 
   return (
     <div style={cardStyle}>
@@ -55,12 +65,22 @@ export default function PokemonSingleView({ data, loading }) {
           <p style={{ color: '#ccc', marginTop: '0', fontSize: '1.2em', marginBottom: '8px' }}>
             <strong>Región:</strong> {data.region}
           </p>
-          <p style={{ color: '#ccc', marginTop: '0', fontSize: '1.2em', marginBottom: '8px' }}>
-            <strong>Tipo:</strong> {data.tipo_1} {data.tipo_2}
-          </p>
-          <p style={{ color: '#ccc', marginTop: '0', fontSize: '1.2em', marginBottom: '8px' }}>
-            <strong>Debilidades:</strong> {data.debilidad_1} {data.debilidad_2} {data.debilidad_3} {data.debilidad_4} {data.debilidad_5} {data.debilidad_6} {data.debilidad_7}
-          </p>
+          <div style={{ color: '#ccc', fontSize: '1.2em', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+            <strong>Tipo:</strong>
+            {tipos.map(t => (
+              tipoImg[t]
+                ? <Image key={t} width={30} src={tipoImg[t]} preview={false} title={t} />
+                : <span key={t}>{t}</span>
+            ))}
+          </div>
+          <div style={{ color: '#ccc', fontSize: '1.2em', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+            <strong>Debilidades:</strong>
+            {debilidades.map(d => (
+              debImg[d]
+                ? <Image key={d} width={30} src={debImg[d]} preview={false} title={d} />
+                : <span key={d}>{d}</span>
+            ))}
+          </div>
         </div>
       </Flex>
     </div>

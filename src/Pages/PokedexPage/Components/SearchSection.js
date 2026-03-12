@@ -41,6 +41,7 @@ function SearchSection({ searchValue, onSearchChange, onSearch, onRandom, criter
         <div style={{ display: 'flex', justifyContent: 'center', width: '100%', padding: '24px' }}>
           {comboboxConfig[criterio] ? (
             <Combobox
+              key={comboboxConfig[criterio].endpoint}
               endpoint={comboboxConfig[criterio].endpoint}
               labelKey={comboboxConfig[criterio].labelKey}
               value={searchValue}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Select } from 'antd'
+import { Select, Spin } from 'antd'
 
 function Combobox({ endpoint, labelKey, value, onChange, placeholder, style, mode, maxCount }) {
   const [options, setOptions] = useState([])
@@ -33,6 +33,7 @@ function Combobox({ endpoint, labelKey, value, onChange, placeholder, style, mod
       maxCount={maxCount}
       onDropdownVisibleChange={handleDropdownVisibleChange}
       onChange={onChange}
+      notFoundContent={loading ? <Spin size='small' style={{ display: 'flex', justifyContent: 'center', padding: '8px' }} /> : null}
       options={options.map(item => ({ value: item[labelKey], label: item[labelKey] }))}
       filterOption={(input, option) =>
         (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
