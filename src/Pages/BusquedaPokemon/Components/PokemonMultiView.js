@@ -26,7 +26,7 @@ export default function PokemonMultiView({ data, loading }) {
     )
   }
 
-  if (!data || data.length === 0) {
+  if (!data || !Array.isArray(data) || data.length === 0) {
     return (
       <div style={cardStyle}>
         <Image width={300} src='https://i.giphy.com/UHAYP0FxJOmFBuOiC2.webp' preview={false} />
