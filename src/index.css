@@ -91,6 +91,138 @@ code {
   padding-right: 16px !important;
 }
 
+/* ── Login page inputs ── */
+
+.login-input,
+.login-input .ant-input {
+  background: rgba(255,255,255,0.05) !important;
+  border-color: rgba(0,188,212,0.3) !important;
+  color: #ddd !important;
+}
+
+.login-input:hover,
+.login-input .ant-input:hover {
+  border-color: rgba(0,188,212,0.6) !important;
+}
+
+.login-input:focus-within,
+.login-input .ant-input:focus {
+  border-color: #00bcd4 !important;
+  box-shadow: 0 0 0 2px rgba(0,188,212,0.15) !important;
+}
+
+.login-input .ant-input-password-icon,
+.login-input .anticon {
+  color: #666 !important;
+}
+
+/* ── Dark table overrides ── */
+
+.ant-table {
+  background: transparent !important;
+  color: #ccc !important;
+}
+
+.ant-table-container {
+  background: transparent !important;
+}
+
+.ant-table-thead > tr > th,
+.ant-table-thead > tr > td {
+  background: rgba(0,188,212,0.08) !important;
+  color: #00bcd4 !important;
+  border-bottom: 1px solid rgba(0,188,212,0.2) !important;
+}
+
+.ant-table-thead > tr > th::before {
+  background-color: rgba(0,188,212,0.2) !important;
+}
+
+.ant-table-tbody > tr > td {
+  background: transparent !important;
+  border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+  color: #ccc !important;
+}
+
+.ant-table-tbody > tr:hover > td,
+.ant-table-tbody > tr.ant-table-row:hover > td {
+  background: rgba(0,188,212,0.07) !important;
+}
+
+.ant-table-tbody > tr.ant-table-row-selected > td {
+  background: rgba(0,188,212,0.12) !important;
+}
+
+.ant-table-wrapper .ant-spin-nested-loading,
+.ant-table-wrapper .ant-spin-container {
+  background: transparent !important;
+}
+
+/* Pagination dark */
+.ant-pagination .ant-pagination-item {
+  background: rgba(20,20,24,0.9) !important;
+  border-color: rgba(0,188,212,0.25) !important;
+}
+
+.ant-pagination .ant-pagination-item a {
+  color: #888 !important;
+}
+
+.ant-pagination .ant-pagination-item:hover {
+  border-color: #00bcd4 !important;
+}
+
+.ant-pagination .ant-pagination-item:hover a {
+  color: #00bcd4 !important;
+}
+
+.ant-pagination .ant-pagination-item-active {
+  background: rgba(0,188,212,0.15) !important;
+  border-color: #00bcd4 !important;
+}
+
+.ant-pagination .ant-pagination-item-active a {
+  color: #00bcd4 !important;
+}
+
+.ant-pagination .ant-pagination-prev button,
+.ant-pagination .ant-pagination-next button {
+  background: rgba(20,20,24,0.9) !important;
+  border-color: rgba(0,188,212,0.25) !important;
+  color: #888 !important;
+}
+
+.ant-pagination .ant-pagination-prev:hover button,
+.ant-pagination .ant-pagination-next:hover button {
+  border-color: #00bcd4 !important;
+  color: #00bcd4 !important;
+}
+
+/* ── Avatar dropdown dark theme ── */
+
+.ant-dropdown .ant-dropdown-menu {
+  background: rgba(20,20,24,0.97) !important;
+  border: 1px solid rgba(0,188,212,0.25) !important;
+}
+
+.ant-dropdown .ant-dropdown-menu .ant-dropdown-menu-item {
+  color: #ccc !important;
+}
+
+.ant-dropdown .ant-dropdown-menu .ant-dropdown-menu-item:hover {
+  background: rgba(0,188,212,0.1) !important;
+  color: #00bcd4 !important;
+}
+
+.ant-dropdown .ant-dropdown-menu .ant-dropdown-menu-item-danger {
+  color: #ff4d4f !important;
+}
+
+.ant-dropdown .ant-dropdown-menu .ant-dropdown-menu-item-danger:hover {
+  background: rgba(255,77,79,0.1) !important;
+  color: #ff4d4f !important;
+}
+
 /* ── Button hover styles ── */
 
 .search-button:hover span {

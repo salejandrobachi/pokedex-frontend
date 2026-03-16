@@ -1,7 +1,8 @@
 import React from 'react'
-import { Menu, Button } from 'antd'
-import { LeftOutlined } from '@ant-design/icons'
+import { Menu, Button, Dropdown } from 'antd'
+import { LeftOutlined, UserOutlined, LogoutOutlined } from '@ant-design/icons'
 import { useNavigate, useLocation } from 'react-router-dom'
+import { useAuth } from '../../Context/AuthContext'
 
 const navItems = [
   { label: 'Inicio', key: 'home' },
@@ -34,9 +35,33 @@ const pathToKey = {
 
 const backPaths = ['/busqueda', '/regiones/nombre']
 
+const ghostBtn = {
+  color: '#00bcd4',
+  borderColor: 'rgba(0,188,212,0.4)',
+  background: 'transparent',
+}
+
+const avatarStyle = {
+  width: 32,
+  height: 32,
+  borderRadius: '50%',
+  background: 'rgba(0,188,212,0.15)',
+  border: '1px solid rgba(0,188,212,0.5)',
+  color: '#00bcd4',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  fontWeight: 700,
+  fontSize: 14,
+  cursor: 'pointer',
+  userSelect: 'none',
+  title: '',
+}
+
 function Navbar() {
   const navigate = useNavigate()
   const location = useLocation()
+  const { isAuthenticated, user, logout } = useAuth()
   const currentKey = pathToKey[location.pathname] || 'home'
   const showBack = backPaths.includes(location.pathname)
 
@@ -46,18 +71,12 @@ function Navbar() {
         <Button
           icon={<LeftOutlined />}
           onClick={() => navigate(-1)}
-          style={{
-            position: 'absolute',
-            left: '12px',
-            color: '#00bcd4',
-            borderColor: 'rgba(0,188,212,0.4)',
-            background: 'transparent',
-            zIndex: 1,
-          }}
+          style={{ position: 'absolute', left: '12px', zIndex: 1, ...ghostBtn }}
         >
           Volver
         </Button>
       )}
+
       <Menu
         mode='horizontal'
         items={navItems}
@@ -65,6 +84,43 @@ function Navbar() {
         selectedKeys={[currentKey]}
         style={{ flex: 1, justifyContent: 'center' }}
       />
+
+      <div style={{ position: 'absolute', right: '12px', display: 'flex', alignItems: 'center', gap: 8 }}>
+        {isAuthenticated ? (
+          <Dropdown
+            trigger={['hover']}
+            menu={{
+              items: [
+                {
+                  key: 'profile',
+                  icon: <UserOutlined />,
+                  label: 'Perfil',
+                  onClick: () => navigate('/profile'),
+                },
+                {
+                  key: 'logout',
+                  icon: <LogoutOutlined />,
+                  label: 'Cerrar sesión',
+                  onClick: logout,
+                  danger: true,
+                },
+              ],
+            }}
+          >
+            <div
+              style={avatarStyle}
+              onClick={() => navigate('/profile')}
+              title={user?.username}
+            >
+              {user?.username?.[0]?.toUpperCase()}
+            </div>
+          </Dropdown>
+        ) : (
+          <Button style={ghostBtn} icon={<UserOutlined />} onClick={() => navigate('/login')}>
+            Iniciar sesión
+          </Button>
+        )}
+      </div>
     </div>
   )
 }
