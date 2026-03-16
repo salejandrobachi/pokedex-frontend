@@ -1,4 +1,5 @@
 import React from 'react'
+import { Flex, Menu } from 'antd'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { UserOutlined, TeamOutlined } from '@ant-design/icons'
 import { useAuth } from '../../Context/AuthContext'
@@ -17,49 +18,21 @@ function ProfileLayout({ title, children }) {
 
   return (
     <PageLayout title={title}>
-      <div style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
+      <Flex gap={16} align='flex-start'>
         {isAdmin && (
-          <nav style={{
-            background: 'rgba(20,20,24,0.9)',
-            border: '1px solid rgba(0,188,212,0.25)',
-            borderRadius: '12px',
-            padding: '8px',
-            minWidth: 160,
-            flexShrink: 0,
-          }}>
-            {sidebarItems.map(item => {
-              const active = location.pathname === item.key
-              return (
-                <div
-                  key={item.key}
-                  onClick={() => navigate(item.key)}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 10,
-                    padding: '10px 14px',
-                    borderRadius: 8,
-                    cursor: 'pointer',
-                    color: active ? '#00bcd4' : '#888',
-                    background: active ? 'rgba(0,188,212,0.1)' : 'transparent',
-                    borderLeft: active ? '2px solid #00bcd4' : '2px solid transparent',
-                    fontSize: 14,
-                    transition: 'all 0.15s',
-                    userSelect: 'none',
-                  }}
-                >
-                  {item.icon}
-                  <span>{item.label}</span>
-                </div>
-              )
-            })}
-          </nav>
+          <Menu
+            mode='inline'
+            items={sidebarItems}
+            selectedKeys={[location.pathname]}
+            onClick={({ key }) => navigate(key)}
+            className='profile-sidebar-menu'
+            style={{ width: 160, flexShrink: 0, borderRadius: 12 }}
+          />
         )}
-
         <div style={{ flex: 1, minWidth: 0 }}>
           {children}
         </div>
-      </div>
+      </Flex>
     </PageLayout>
   )
 }

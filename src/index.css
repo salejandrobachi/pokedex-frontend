@@ -198,6 +198,29 @@ code {
   color: #00bcd4 !important;
 }
 
+/* ── Profile sidebar menu dark theme ── */
+
+.profile-sidebar-menu {
+  width: 160px !important;
+  background: rgba(20,20,24,0.9) !important;
+  border: 1px solid rgba(0,188,212,0.25) !important;
+  border-inline-end: none !important;
+}
+
+.profile-sidebar-menu .ant-menu-item {
+  color: #888 !important;
+}
+
+.profile-sidebar-menu .ant-menu-item:hover {
+  color: #00bcd4 !important;
+  background: rgba(0,188,212,0.08) !important;
+}
+
+.profile-sidebar-menu .ant-menu-item-selected {
+  background: rgba(0,188,212,0.12) !important;
+  color: #00bcd4 !important;
+}
+
 /* ── Avatar dropdown dark theme ── */
 
 .ant-dropdown .ant-dropdown-menu {

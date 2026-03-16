@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { Form, Input, Button, Alert } from 'antd'
-import { useNavigate, Link } from 'react-router-dom'
+import { Form, Input, Button, Alert, Typography, Flex } from 'antd'
+import { LeftOutlined } from '@ant-design/icons'
+import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../Context/AuthContext'
 import { registerUser, loginUser } from '../../services/auth.service'
 
@@ -61,23 +62,13 @@ function RegisterPage() {
       <div style={{ position: 'absolute', inset: 0, background: 'rgba(15,15,18,0.82)' }} />
 
       <div style={{ position: 'absolute', top: 20, left: 24, zIndex: 2 }}>
-        <Link
-          to='/'
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 6,
-            color: '#00bcd4',
-            fontSize: 14,
-            background: 'rgba(20,20,24,0.85)',
-            border: '1px solid rgba(0,188,212,0.25)',
-            borderRadius: 8,
-            padding: '6px 14px',
-            textDecoration: 'none',
-          }}
+        <Button
+          icon={<LeftOutlined />}
+          onClick={() => navigate('/')}
+          style={{ background: 'rgba(20,20,24,0.85)', borderColor: 'rgba(0,188,212,0.25)', color: '#00bcd4' }}
         >
-          ← Inicio
-        </Link>
+          Inicio
+        </Button>
       </div>
 
       <div style={{ position: 'relative', zIndex: 1, ...cardStyle }}>
@@ -118,10 +109,10 @@ function RegisterPage() {
           </Form.Item>
         </Form>
 
-        <div style={{ textAlign: 'center' }}>
-          <span style={{ color: '#666', fontSize: 13 }}>¿Ya tenés cuenta? </span>
-          <Link to='/login' style={{ color: '#00bcd4', fontSize: 13 }}>Iniciar sesión</Link>
-        </div>
+        <Flex justify='center' gap={4}>
+          <Typography.Text style={{ color: '#666', fontSize: 13 }}>¿Ya tenés cuenta?</Typography.Text>
+          <Typography.Link href='/login' style={{ fontSize: 13 }}>Iniciar sesión</Typography.Link>
+        </Flex>
       </div>
     </div>
   )
