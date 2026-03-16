@@ -14,6 +14,7 @@ function getUserFromToken(token) {
 export function AuthProvider({ children }) {
   const [token, setToken] = useState(null)
   const [user, setUser] = useState(null)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const savedToken = localStorage.getItem('token')
@@ -28,6 +29,7 @@ export function AuthProvider({ children }) {
         localStorage.removeItem('user')
       }
     }
+    setLoading(false)
   }, [])
 
   function login(token, user) {
@@ -47,7 +49,7 @@ export function AuthProvider({ children }) {
   const isAuthenticated = !!token
 
   return (
-    <AuthContext.Provider value={{ user, token, login, logout, isAuthenticated }}>
+    <AuthContext.Provider value={{ user, token, login, logout, isAuthenticated, loading }}>
       {children}
     </AuthContext.Provider>
   )

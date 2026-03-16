@@ -34,6 +34,7 @@ const pathToKey = {
 }
 
 const backPaths = ['/busqueda', '/regiones/nombre']
+const homePaths = ['/profile', '/admin']
 
 const ghostBtn = {
   color: '#00bcd4',
@@ -47,6 +48,7 @@ function Navbar() {
   const { isAuthenticated, user, logout } = useAuth()
   const currentKey = pathToKey[location.pathname] || 'home'
   const showBack = backPaths.includes(location.pathname)
+  const showHome = homePaths.includes(location.pathname)
 
   return (
     <Flex align='center' style={{ position: 'relative' }}>
@@ -54,6 +56,15 @@ function Navbar() {
         <Button
           icon={<LeftOutlined />}
           onClick={() => navigate(-1)}
+          style={{ position: 'absolute', left: 12, zIndex: 1, ...ghostBtn }}
+        >
+          Volver
+        </Button>
+      )}
+      {showHome && (
+        <Button
+          icon={<LeftOutlined />}
+          onClick={() => navigate('/')}
           style={{ position: 'absolute', left: 12, zIndex: 1, ...ghostBtn }}
         >
           Volver
